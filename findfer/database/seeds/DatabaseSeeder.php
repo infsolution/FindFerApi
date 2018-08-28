@@ -3,6 +3,12 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use findfer\model\Address;
+use findfer\model\Market;
+use findfer\model\Product;
+use findfer\model\Stand;
+use findfer\model\Poster;
+use findfer\model\Image;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call('SeriveSeeder');
         $this->call('AboultSeeder');
         $this->call('ContactSeeder');
-        /*$this->call('AddressSeeder');
+        $this->call('AddressSeeder');
         $this->call('MarketSeeder');
         $this->call('ProductSeeder');
         $this->call('StandSeeder');
@@ -26,7 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call('ImageSeeder');
         $this->call('CouponSeeder');
         $this->call('UserUserSeeder');
-        $this->call('SalePosterSeeder');*/
+        $this->call('SalePosterSeeder');
     }
 }
 
@@ -74,32 +80,41 @@ class ContactSeeder extends Seeder{
 class AddressSeeder extends Seeder{
 	public function run()
     {
-        DB::insert('',[]);
+        Address::create(['district'=>'Parque Piaui','city'=>'Teresina','state'=>'Piaui','country'=>'Brasil']);
+        Address::create(['district'=>'Piçarra','city'=>'Teresina','state'=>'Piaui','country'=>'Brasil']);
+        Address::create(['district'=>'Vermelha','city'=>'Teresina','state'=>'Piaui','country'=>'Brasil']);
     }
 }
 
 class MarketSeeder extends Seeder{
 	public function run()
     {
-        DB::insert('',[]);
+        Market::create(['address_id'=>1,'name'=>'Mercado do Piçarra','description'=>'Feira da Piçarra','latitude'=>42.584297,'longitude'=>-5.981236,'foundation'=>'1941-12-19']);
+        Market::create(['address_id'=>2,'name'=>'Mercado do Parque Piaui','description'=>'Feira do parque','latitude'=>42.896584,'longitude'=>-5.4874625,'foundation'=>'1970-02-10']);
     }
 }
 class ProductSeeder extends Seeder{
 	public function run()
     {
-        DB::insert('',[]);
+       Product::create(['name'=>'Manga']);
+       Product::create(['name'=>'Banana']);
+       Product::create(['name'=>'Laranja']);
+       Product::create(['name'=>'Uva']);
+       Product::create(['name'=>'Acerola']);
     }
 }
 class StandSeeder extends Seeder{
 	public function run()
     {
-        DB::insert('',[]);
+        Stand::create(['market_id'=>1,'user_id'=>1,'name'=>'Banca do Cicim','slogan'=>'Banca de produtos bons e baratos','latitude'=>42.896587,'longitude'=>-5.214536]);
+        Stand::create(['market_id'=>2,'user_id'=>1,'name'=>'Banca do Cicim da Piçarra','slogan'=>'Banca de produtos bons e baratos agora na Piçarra','latitude'=>42.125896,'longitude'=>-5.897025]);
     }
 }
 class PosterSeeder extends Seeder{
 	public function run()
     {
-        DB::insert('',[]);
+        Poster::create(['stand_id'=>1,'product_id'=>1,'title'=>'Manga','description'=>'Manga Roda','value'=>5.99]);
+        Poster::create(['stand_id'=>2,'product_id'=>2,'title'=>'Banana','description'=>'Banana maçã','value'=>5.99]);
     }
 }
 class SaleSeeder extends Seeder{

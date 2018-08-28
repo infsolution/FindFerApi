@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    protected $fillable = ['title','value'];
+    protected $fillable = ['type','value'];
 	public $timestamps = true;
 }

@@ -45,6 +45,15 @@ return [
             'driver' => 'passport',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'admin-api' => [
+            'driver' => 'passport',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -69,6 +78,11 @@ return [
             'driver' => 'eloquent',
             'model' => findfer\User::class,
         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => findfer\model\Admin::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -94,6 +108,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
         ],

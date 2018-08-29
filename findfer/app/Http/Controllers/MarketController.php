@@ -7,6 +7,12 @@ use findfer\model\Market;
 
 class MarketController extends Controller
 {
+    protected $redirectTo = '/admin';
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin')->except('logout');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class MarketController extends Controller
      */
     public function index()
     {
-        return Market::all();
+        $markets = Market::all();
+        return view('market.home')->with('markets',$markets);
     }
 
     /**
@@ -24,7 +31,7 @@ class MarketController extends Controller
      */
     public function create()
     {
-        //
+        return view('market.form');
     }
 
     /**

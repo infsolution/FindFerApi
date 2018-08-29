@@ -25,9 +25,9 @@ Route::post('details', 'Api\UserController@details');
 });
 
 
-Route::resource('/market','MarketController');
+//Route::resource('/market','MarketController');
 Route::prefix('poster')->group(function(){
-	//Route::get('','PosterController@index')->name('posters');
-	Route::middleware('auth:api')->get('','PosterController@index')->name('posters');
+	Route::get('','PosterController@index')->name('posters');
+	//Route::middleware('auth:api')->get('','PosterController@index')->name('posters');
 	Route::post('/create','PosterController@create')->name('create.poster');
 });
